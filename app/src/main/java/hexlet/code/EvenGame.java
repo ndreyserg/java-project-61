@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 public final class EvenGame implements Game {
 
+    private final Random generator = new Random();
+
     public boolean play() {
         final var roundCount = 3;
-
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         for (var i = 0; i < roundCount; i++) {
             var roundResult = playRound();
@@ -20,8 +21,7 @@ public final class EvenGame implements Game {
 
     private boolean playRound() {
         final var  maxRandomNumber = 10000;
-        var generator = new Random();
-        var num = generator.nextInt(maxRandomNumber);
+        var num = this.generator.nextInt(maxRandomNumber);
         var correctAnswer = num % 2 == 0 ? "yes" : "no";
         System.out.println("Question: " + num);
         System.out.print("Your answer: ");
