@@ -7,10 +7,10 @@ public final class EvenGame implements Game {
 
     public boolean play() {
         final var roundCount = 3;
-        var generator = new Random();
+
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         for (var i = 0; i < roundCount; i++) {
-            var roundResult = playRound(generator);
+            var roundResult = playRound();
             if (!roundResult) {
                 return false;
             }
@@ -18,8 +18,9 @@ public final class EvenGame implements Game {
         return true;
     }
 
-    private boolean playRound(Random generator) {
+    private boolean playRound() {
         final var  maxRandomNumber = 10000;
+        var generator = new Random();
         var num = generator.nextInt(maxRandomNumber);
         var correctAnswer = num % 2 == 0 ? "yes" : "no";
         System.out.println("Question: " + num);
