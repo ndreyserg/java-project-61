@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.games.GCDGame;
 import hexlet.code.games.Game;
 import hexlet.code.games.CalcGame;
 import hexlet.code.games.EvenGame;
@@ -60,6 +61,7 @@ class Engine {
         return switch (gameName) {
             case "Even" -> EvenGame.getGame(ROUNDS_COUNT);
             case "Calc" -> CalcGame.getGame(ROUNDS_COUNT);
+            case "GCD" -> GCDGame.getGame(ROUNDS_COUNT);
             default -> null;
         };
     }
