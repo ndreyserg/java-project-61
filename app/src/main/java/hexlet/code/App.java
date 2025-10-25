@@ -6,7 +6,7 @@ import java.util.StringJoiner;
 
 public class App {
     public static void main(String[] args) {
-        String[] commands = new String[]{"Exit", "Greet", "Even", "Calc", "GCD", "Progression"};
+        String[] commands = new String[]{"Exit", "Greet", "Even", "Calc", "GCD", "Progression", "Prime"};
         var commandNumber = selectCommand(commands);
         if (commandNumber >= commands.length || commandNumber < 1) {
             return;
