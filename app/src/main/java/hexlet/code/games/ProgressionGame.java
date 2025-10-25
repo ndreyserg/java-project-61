@@ -16,7 +16,7 @@ public class ProgressionGame {
             rounds[i] = getRound();
         }
         return new Game(
-                "Please enter the game number and press Enter.",
+                "What number is missing in the progression?",
                 rounds
         );
     }
