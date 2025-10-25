@@ -14,4 +14,4 @@
 [![asciicast](https://asciinema.org/a/xq6p3SxrB1tHuh7mXVhWsKtvj.svg)](https://asciinema.org/a/xq6p3SxrB1tHuh7mXVhWsKtvj)
 
 # Calc game
-[![asciicast](https://asciinema.org/a/nE1bWi06bniCUux1KbwIyrduk)](https://asciinema.org/a/nE1bWi06bniCUux1KbwIyrduk)
+[![asciicast](https://asciinema.org/a/nE1bWi06bniCUux1KbwIyrduk.svg)](https://asciinema.org/a/nE1bWi06bniCUux1KbwIyrduk)
