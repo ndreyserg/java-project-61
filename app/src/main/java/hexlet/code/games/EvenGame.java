@@ -1,10 +1,10 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 public class EvenGame {
 
-    private static final Random GENERATOR = new Random();
+    private static final SecureRandom GENERATOR = new SecureRandom();
 
     private static final int MAX_NUM = 100;
 

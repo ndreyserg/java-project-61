@@ -10,5 +10,8 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=ndreyserg_java-project-61&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=ndreyserg_java-project-61)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=ndreyserg_java-project-61&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=ndreyserg_java-project-61)
 
-# Demo
+# Even game
 [![asciicast](https://asciinema.org/a/xq6p3SxrB1tHuh7mXVhWsKtvj.svg)](https://asciinema.org/a/xq6p3SxrB1tHuh7mXVhWsKtvj)
+
+# Calc game
+[![asciicast](https://asciinema.org/a/nE1bWi06bniCUux1KbwIyrduk)](https://asciinema.org/a/nE1bWi06bniCUux1KbwIyrduk)

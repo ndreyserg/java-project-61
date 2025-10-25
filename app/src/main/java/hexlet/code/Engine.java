@@ -1,6 +1,7 @@
 package hexlet.code;
 
 import hexlet.code.games.Game;
+import hexlet.code.games.CalcGame;
 import hexlet.code.games.EvenGame;
 
 import java.util.Scanner;
@@ -43,7 +44,7 @@ class Engine {
                 outputMessage("Correct!");
             } else {
                 outputMessage(
-                        String.format("'%s' is wrong answer ;(. Correct answer was '%s'.", answer, round.getAnswer())
+                    String.format("'%s' is wrong answer ;(. Correct answer was '%s'.", answer, round.getAnswer())
                 );
                 return false;
             }
@@ -56,11 +57,10 @@ class Engine {
     }
 
     private static Game getGame(String gameName) {
-        switch (gameName) {
-            case "Even":
-                return EvenGame.getGame(ROUNDS_COUNT);
-            default:
-                return null;
-        }
+        return switch (gameName) {
+            case "Even" -> EvenGame.getGame(ROUNDS_COUNT);
+            case "Calc" -> CalcGame.getGame(ROUNDS_COUNT);
+            default -> null;
+        };
     }
 }
