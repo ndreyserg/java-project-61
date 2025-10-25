@@ -4,6 +4,7 @@ import hexlet.code.games.GCDGame;
 import hexlet.code.games.Game;
 import hexlet.code.games.CalcGame;
 import hexlet.code.games.EvenGame;
+import hexlet.code.games.ProgressionGame;
 
 import java.util.Scanner;
 
@@ -62,6 +63,7 @@ class Engine {
             case "Even" -> EvenGame.getGame(ROUNDS_COUNT);
             case "Calc" -> CalcGame.getGame(ROUNDS_COUNT);
             case "GCD" -> GCDGame.getGame(ROUNDS_COUNT);
+            case "Progression" -> ProgressionGame.getGame(ROUNDS_COUNT);
             default -> null;
         };
     }
