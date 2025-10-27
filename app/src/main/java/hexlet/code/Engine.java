@@ -1,29 +1,37 @@
 package hexlet.code;
 
-import hexlet.code.games.GCDGame;
-import hexlet.code.games.Game;
-import hexlet.code.games.CalcGame;
-import hexlet.code.games.EvenGame;
-import hexlet.code.games.ProgressionGame;
-import hexlet.code.games.PrimeGame;
-
 import java.util.Scanner;
 
-class Engine {
+public class Engine {
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    private static final int ROUNDS_COUNT = 3;
+    public static void run() {
+        greeting();
+    }
 
-    public static void run(String gameName) {
+    public static void run(String brief, String[][] questions) {
         var userName = greeting();
-        var game = getGame(gameName);
-        if (game == null) {
-            return;
-        }
-        outputMessage(game.getBriefing());
-        var gameResult = playGame(game);
+        outputMessage(brief);
+        var gameResult = playGame(questions);
         var message = gameResult ? "Congratulations, %s!" : "Let's try again, %s!";
         outputMessage(String.format(message, userName));
+    }
+
+    private static boolean playGame(String[][] questions) {
+        for (var question : questions) {
+            outputMessage("Question: " + question[0]);
+            var answer = ask("Your answer: ");
+            var roundResult = question[1].equals(answer);
+            if (roundResult) {
+                outputMessage("Correct!");
+            } else {
+                outputMessage(
+                    String.format("'%s' is wrong answer ;(. Correct answer was '%s'.", answer, question[1])
+                );
+                return false;
+            }
+        }
+        return true;
     }
 
     private static String greeting() {
@@ -38,35 +46,7 @@ class Engine {
         return SCANNER.nextLine();
     }
 
-    private static boolean playGame(Game game) {
-        for (var round : game.getRounds()) {
-            outputMessage("Question: " + round.getQuestion());
-            var answer = ask("Your answer: ");
-            var roundResult = round.getAnswer().equals(answer);
-            if (roundResult) {
-                outputMessage("Correct!");
-            } else {
-                outputMessage(
-                    String.format("'%s' is wrong answer ;(. Correct answer was '%s'.", answer, round.getAnswer())
-                );
-                return false;
-            }
-        }
-        return true;
-    }
-
     private static void outputMessage(String message) {
         System.out.println(message);
-    }
-
-    private static Game getGame(String gameName) {
-        return switch (gameName) {
-            case "Even" -> EvenGame.getGame(ROUNDS_COUNT);
-            case "Calc" -> CalcGame.getGame(ROUNDS_COUNT);
-            case "GCD" -> GCDGame.getGame(ROUNDS_COUNT);
-            case "Progression" -> ProgressionGame.getGame(ROUNDS_COUNT);
-            case "Prime" -> PrimeGame.getGame(ROUNDS_COUNT);
-            default -> null;
-        };
     }
 }

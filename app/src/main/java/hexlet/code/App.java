@@ -1,31 +1,54 @@
 package hexlet.code;
 
+import hexlet.code.games.EvenGame;
+import hexlet.code.games.CalcGame;
+import hexlet.code.games.GCDGame;
+import hexlet.code.games.PrimeGame;
+import hexlet.code.games.ProgressionGame;
+import hexlet.code.games.Greeting;
+
 import java.util.Scanner;
-import java.util.StringJoiner;
 
 
 public class App {
+
+    private static final int ROUND_COUNT = 3;
+
     public static void main(String[] args) {
-        String[] commands = new String[]{"Exit", "Greet", "Even", "Calc", "GCD", "Progression", "Prime"};
-        var commandNumber = selectCommand(commands);
-        if (commandNumber >= commands.length || commandNumber < 1) {
-            return;
-        }
-        Engine.run(commands[commandNumber]);
-    }
-
-    public static int selectCommand(String[] commands) {
-        var joiner = new StringJoiner(System.lineSeparator());
-
-        for (var i = 1; i < commands.length; i++) {
-            joiner.add(i + " - " + commands[i]);
-        }
-        joiner.add("0 - " + commands[0]);
-        System.out.println(joiner);
+        System.out.println("1 - Greet");
+        System.out.println("2 - Even");
+        System.out.println("3 - Calc");
+        System.out.println("4 - GCD");
+        System.out.println("5 - Progression");
+        System.out.println("6 - Prime");
+        System.out.println("0 - Exit");
         System.out.print("Your choice: ");
+
         var scanner = new Scanner(System.in);
-        var commandNumber = scanner.nextInt();
+        var choice = scanner.next();
         System.out.print(System.lineSeparator());
-        return commandNumber;
+
+        switch (choice) {
+            case "1":
+                Greeting.play();
+                break;
+            case "2":
+                EvenGame.play(ROUND_COUNT);
+                break;
+            case "3":
+                CalcGame.play(ROUND_COUNT);
+                break;
+            case "4":
+                GCDGame.play(ROUND_COUNT);
+                break;
+            case "5":
+                ProgressionGame.play(ROUND_COUNT);
+                break;
+            case "6":
+                PrimeGame.play(ROUND_COUNT);
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
 import java.security.SecureRandom;
 
 public class GCDGame {
@@ -7,24 +8,22 @@ public class GCDGame {
 
     private static final int MAX_NUM = 10;
 
-    public static Game getGame(int roundCount) {
-        Round[] rounds = new Round[roundCount];
+    private static final String BRIEF = "Find the greatest common divisor of given numbers.";
+
+    public static void play(int roundCount) {
+        String[][] questions = new String[roundCount][];
         for (int i = 0; i < roundCount; i++) {
-            rounds[i] = getRound();
+            questions[i] = getQuestion();
         }
-        return new Game(
-                "Find the greatest common divisor of given numbers.",
-                rounds
-        );
+        Engine.run(BRIEF, questions);
     }
 
-    private static Round getRound() {
+    private static String[] getQuestion() {
         var a = GENERATOR.nextInt(MAX_NUM);
         var b = GENERATOR.nextInt(MAX_NUM);
-        return new Round(
-                a + " " + b,
-                Integer.toString(getGCD(a, b))
-        );
+        var question = a + " " + b;
+        var answer = Integer.toString(getGCD(a, b));
+        return new String[] {question, answer};
     }
 
     private static int getGCD(int a, int b) {

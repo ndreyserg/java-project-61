@@ -1,5 +1,7 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 import java.security.SecureRandom;
 
 public class PrimeGame {
@@ -8,24 +10,23 @@ public class PrimeGame {
 
     private static final SecureRandom GENERATOR = new SecureRandom();
 
-    public static Game getGame(int roundCound) {
-        Round[] rounds = new Round[roundCound];
-        for (int i = 0; i < roundCound; i++) {
-            rounds[i] = getRound();
+    private static final String BRIEF = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+
+    public static void play(int roundCount) {
+        String[][] questions = new String[roundCount][];
+        for (int i = 0; i < roundCount; i++) {
+            questions[i] = getQuestion();
         }
-        return new Game(
-                "Answer 'yes' if given number is prime. Otherwise answer 'no'.",
-                rounds
-        );
+        Engine.run(BRIEF, questions);
     }
 
-    public static Round getRound() {
+    private static String[] getQuestion() {
         var question = GENERATOR.nextInt(MAX_NUMBER);
         var answer = isPrime(question) ? "yes" : "no";
-        return new Round(
-                Integer.toString(question),
-                answer
-        );
+        return new String[]{
+            Integer.toString(question),
+            answer
+        };
     }
 
     private static boolean isPrime(int number) {
