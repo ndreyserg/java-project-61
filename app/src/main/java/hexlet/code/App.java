@@ -12,8 +12,6 @@ import java.util.Scanner;
 
 public class App {
 
-    private static final int ROUND_COUNT = 3;
-
     public static void main(String[] args) {
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
@@ -33,21 +31,22 @@ public class App {
                 Greeting.play();
                 break;
             case "2":
-                EvenGame.play(ROUND_COUNT);
+                EvenGame.play();
                 break;
             case "3":
-                CalcGame.play(ROUND_COUNT);
+                CalcGame.play();
                 break;
             case "4":
-                GCDGame.play(ROUND_COUNT);
+                GCDGame.play();
                 break;
             case "5":
-                ProgressionGame.play(ROUND_COUNT);
+                ProgressionGame.play();
                 break;
             case "6":
-                PrimeGame.play(ROUND_COUNT);
+                PrimeGame.play();
                 break;
             default:
+                System.out.println("Unknown user choice: " + choice);
                 break;
         }
     }

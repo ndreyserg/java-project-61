@@ -3,50 +3,41 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
+    public static final int ROUND_COUNT = 3;
+
     private static final Scanner SCANNER = new Scanner(System.in);
 
-    public static void run() {
-        greeting();
-    }
-
     public static void run(String brief, String[][] questions) {
-        var userName = greeting();
-        outputMessage(brief);
-        var gameResult = playGame(questions);
-        var message = gameResult ? "Congratulations, %s!" : "Let's try again, %s!";
-        outputMessage(String.format(message, userName));
-    }
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+        var userName = SCANNER.nextLine();
+        System.out.printf("Hello, %s!\n", userName);
+        System.out.println(brief);
 
-    private static boolean playGame(String[][] questions) {
+        if (questions.length == 0) {
+            return;
+        }
+
+        var gameResult = true;
+
         for (var question : questions) {
-            outputMessage("Question: " + question[0]);
-            var answer = ask("Your answer: ");
+            System.out.println("Question: " + question[0]);
+            System.out.print("Your answer: ");
+            var answer = SCANNER.nextLine();
             var roundResult = question[1].equals(answer);
             if (roundResult) {
-                outputMessage("Correct!");
+                System.out.println("Correct!");
             } else {
-                outputMessage(
-                    String.format("'%s' is wrong answer ;(. Correct answer was '%s'.", answer, question[1])
+                System.out.printf(
+                        "'%s' is wrong answer ;(. Correct answer was '%s'.%s",
+                        answer, question[1], System.lineSeparator()
                 );
-                return false;
+                gameResult = false;
+                break;
             }
         }
-        return true;
+        var message = gameResult ? "Congratulations, %s!%s" : "Let's try again, %s!%s";
+        System.out.printf(message, userName, System.lineSeparator());
     }
 
-    private static String greeting() {
-        outputMessage("Welcome to the Brain Games!");
-        var name = ask("May I have your name? ");
-        outputMessage(String.format("Hello, %s!", name));
-        return name;
-    }
-
-    private static String ask(String question) {
-        System.out.print(question);
-        return SCANNER.nextLine();
-    }
-
-    private static void outputMessage(String message) {
-        System.out.println(message);
-    }
 }
