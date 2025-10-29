@@ -19,12 +19,20 @@ public class ProgressionGame {
             var step = Utils.generateNumber(0, MAX_PROGRESSION_STEP);
             var length = Utils.generateNumber(MIN_PROGRESSION_LENGTH, MAX_PROGRESSION_LENGTH);
             var answerInex = Utils.generateNumber(0, length - 1);
-            String[] progression = Utils.getProgression(start, step, length);
+            String[] progression = getProgression(start, step, length);
             var answer = progression[answerInex];
             progression[answerInex] = "..";
             var question = String.join(" ", progression);
             questions[i] = new String[]{question, answer};
         }
         Engine.run(BRIEF, questions);
+    }
+
+    private static String[] getProgression(int start, int step, int length) {
+        String[] progression = new String[length];
+        for (var i = 0; i < length; i++) {
+            progression[i] = Integer.toString(start + i * step);
+        }
+        return progression;
     }
 }

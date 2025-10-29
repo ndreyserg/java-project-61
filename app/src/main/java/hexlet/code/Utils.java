@@ -38,12 +38,4 @@ public class Utils {
         }
         return true;
     }
-
-    public static String[] getProgression(int start, int step, int length) {
-        String[] progression = new String[length];
-        for (var i = 0; i < length; i++) {
-            progression[i] = Integer.toString(start + i * step);
-        }
-        return progression;
-    }
 }
