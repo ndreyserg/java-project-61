@@ -15,7 +15,7 @@ public class CalcGame {
         for (int i = 0; i < Engine.ROUND_COUNT; i++) {
             var a = Utils.generateNumber(0, MAX_NUM);
             var b = Utils.generateNumber(0, MAX_NUM);
-            var op = Utils.getArrayRandom(OPERATIONS);
+            var op = OPERATIONS[Utils.generateNumber(0, OPERATIONS.length - 1)];
             var answer = getAnswer(a, b, op);
             var question =  String.format("%d %s %d", a, op, b);
             questions[i] = new String[]{question, Integer.toString(answer)};

@@ -15,9 +15,16 @@ public class GCDGame {
             var a = Utils.generateNumber(0, MAX_NUM);
             var b = Utils.generateNumber(0, MAX_NUM);
             var question = a + " " + b;
-            var answer = Integer.toString(Utils.getGCD(a, b));
+            var answer = Integer.toString(getGCD(a, b));
             questions[i] = new String[] {question, answer};
         }
         Engine.run(BRIEF, questions);
+    }
+
+    public static int getGCD(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return getGCD(b, a % b);
     }
 }
